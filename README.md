@@ -2,7 +2,7 @@
 
 A C++ raylib App (Game)
 
-![Demonstration picture of the menu](https://github.com/jviguy/strafer/blob/master/images/demo.jpg?raw=true)
+![Demonstration picture of the menu](https://github.com/Jviguy/strafer/blob/master/images/demo.png?raw=true)
 
 Teaches how to counter strafe through time through a physics simulation of the game. 
 Your goal is optimize your time till accurate. It should be near 80ms-120ms with 100ms being the best.
