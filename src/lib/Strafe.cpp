@@ -25,18 +25,17 @@ steady_clock::duration Strafe::getTimeToStop() const {
 uint8_t Strafe::Score() const {
     std::chrono::duration<float, std::milli> duration_ms = getTimeToStop();
     const float timeToStopMs = duration_ms.count();
-    const float idealTime = 100.0f;    // The "sweet spot" for a perfect 100.
-    const float minEffectiveTime = 50.0f; // Any stop faster than this is a failed attempt.
-    const float maxEffectiveTime = 150.0f; // Any stop slower than this is a failed attempt.
+    constexpr float idealTime = 100.0f;    // The "sweet spot" for a perfect 100.
+    constexpr float maxEffectiveTime = 150.0f; // Any stop slower than this is a failed attempt.
 
     // --- Handle immediate failures ---
-    if (timeToStopMs < minEffectiveTime || timeToStopMs > maxEffectiveTime) {
+    if (constexpr float minEffectiveTime = 50.0f; timeToStopMs < minEffectiveTime || timeToStopMs > maxEffectiveTime) {
         return 0;
     }
 
     // --- Calculate the score ---
     // First, find the distance from the ideal time.
-    float distance = std::abs(timeToStopMs - idealTime);
+    const float distance = std::abs(timeToStopMs - idealTime);
 
     // Calculate the maximum possible distance from the ideal time within the effective range.
     // In this case, 150ms is further from 100ms than 70ms is. (50 vs 30)

@@ -33,7 +33,7 @@ void StrafeManager::Update(const bool aKey, const bool dKey, const float deltaTi
     if (wishDir != 0.0f) {
         // This is the formula directly from your research.
         // It calculates the amount of velocity to add this tick.
-        float accelAmount = SV_ACCELERATE * MAX_SPEED * deltaTime * SURFACE_FRICTION;
+        const float accelAmount = SV_ACCELERATE * MAX_SPEED * deltaTime * SURFACE_FRICTION;
 
         // Apply the acceleration in the desired direction.
         currentVelocity += wishDir * accelAmount;
@@ -66,7 +66,7 @@ void StrafeManager::Update(const bool aKey, const bool dKey, const float deltaTi
             }
 
             // Now, we can safely access the value to check for key release.
-            bool hasReleasedInitialKey = (initialKey.value() == KEY_A && !aKey) ||
+            const bool hasReleasedInitialKey = (initialKey.value() == KEY_A && !aKey) ||
                                        (initialKey.value() == KEY_D && !dKey);
 
             // Finally, check if either of our stopping conditions are true.
